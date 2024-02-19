@@ -4,21 +4,30 @@ import injuryData from "./injuries.json";
 import playerData from "./players.json";
 import "./styles.css";
 
-const BODY_PARTS = [
-  { name: "head", x: 50, y: 20 },
-  { name: "chest", x: 50, y: 60 },
-  { name: "stomach", x: 50, y: 90 },
-  { name: "leftArm", x: 30, y: 60 },
-  { name: "rightArm", x: 70, y: 60 },
-  { name: "leftLeg", x: 30, y: 120 },
-  { name: "rightLeg", x: 70, y: 120 },
+const BODY_PARTS = [ 
+  { name: "head", x: 50, y: 20 }, 
+  { name: "chest", x: 50, y: 60 }, 
+  { name: "stomach", x: 50, y: 90 }, 
+  { name: "leftArm", x: 30, y: 60 }, 
+  { name: "rightArm", x: 70, y: 60 }, 
+  { name: "leftForearm", x: 20, y: 80 }, 
+  { name: "rightForearm", x: 80, y: 80 }, 
+  { name: "leftHand", x: 10, y: 100 }, 
+  { name: "rightHand", x: 90, y: 100 }, 
+  { name: "leftThigh", x: 30, y: 120 }, 
+  { name: "rightThigh", x: 70, y: 120 }, 
+  { name: "leftCalf", x: 20, y: 160 }, 
+  { name: "rightCalf", x: 80, y: 160 }, 
+  { name: "leftFoot", x: 30, y: 180 }, 
+  { name: "rightFoot", x: 70, y: 180 },
 ];
 
-const InjuryMarker = ({ bodyPart, injury }) => {
-  const colorScale = scaleLinear().domain([1, 12]).range(["yellow", "red"]);
-  const weeksMissing = injury.injury1 + injury.injury2;
-  const color = colorScale(weeksMissing);
-
+const InjuryMarker = ({ bodyPart, injury }) => { 
+  const colorScale = scaleLinear().domain([1, 12]).range(["yellow", "red"]); 
+    if (!injury) return null; 
+  const severity = injury.injury1 + injury.injury2; 
+  const color = colorScale(severity);
+  
   return (
     <circle
       cx={bodyPart.x}
