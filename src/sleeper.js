@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { scaleLinear } from "d3-scale";
 import injuryData from "./injuries.json";
 import playerData from "./players.json";
-import "./styles.css";
+import "./sleeper.css";
 
 const BODY_PARTS = [ 
   { name: "head", x: 50, y: 20 }, 
@@ -112,5 +112,4 @@ const App = () => {
   );
 };
 
-export default App;
-InjuryTab;
+export default { App, InjuryTab };
