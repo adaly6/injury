@@ -4,55 +4,56 @@ import injuryData from "./injuries.json";
 import playerData from "./players.json";
 import silhouette from './silhouette.png';
 import "./sleeper.css";
+import _ from 'lodash';
 
 const injuryToBodyPartMap = [ 
-  { name: "Abdomen", x: 100, y: 260 }, 
-  { name: "Ankle", x: 72, y: 467 }, 
-  { name: "ankle", x: 128, y: 467 }, 
-  { name: "Arm", x: 100, y: 180 }, 
-  { name: "Back", x: 100, y: 180 }, 
-  { name: "Biceps", x: 50, y: 150 }, 
-  { name: "Calf", x: 74, y: 420 }, 
-  { name: "Chest", x: 100, y: 180 }, 
-  { name: "Concussion", x: 100, y: 65 }, 
-  { name: "Elbow", x: 10, y: 257 }, 
-  { name: "Face", x: 100, y: 65 }, 
-  { name: "Finger", x: 176, y: 257 }, 
-  { name: "Foot", x: 128, y: 467 }, 
-  { name: "Forearm", x: 80, y: 200 }, 
-  { name: "Groin", x: 100, y: 300 }, 
-  { name: "Hamstring", x: 75, y: 345 }, 
-  { name: "Hand", x: 176, y: 257 },
-  { name: "Heel", x: 72, y: 467 }, 
-  { name: "Hip", x: 100, y: 180 }, 
-  { name: "Kidney", x: 100, y: 260 }, 
-  { name: "Knee", x: 50, y: 150 }, 
-  { name: "left Hand", x: 150, y: 150 }, 
-  { name: "left Finger", x: 150, y: 150 }, 
-  { name: "left Hamstring", x: 75, y: 345 }, 
-  { name: "left Knee", x: 25, y: 240 }, 
-  { name: "left Quadricep", x: 75, y: 345 }, 
+  { name: "Abdomen", x: 100, y: 160 }, 
+  { name: "Ankle", x: 81, y: 300 }, 
+  { name: "ankle", x: 120, y: 300 }, 
+  { name: "Arm", x: 150, y: 140 }, 
+  { name: "Back", x: 100, y: 150 }, 
+  { name: "Biceps", x: 52, y: 130 }, 
+  { name: "Calf", x: 82, y: 285 }, 
+  { name: "Chest", x: 100, y: 120 }, 
+  { name: "Concussion", x: 100, y: 45 }, 
+  { name: "Elbow", x: 152, y: 145 }, 
+  { name: "Face", x: 100, y: 45 }, 
+  { name: "Finger", x: 150, y: 175 }, 
+  { name: "Foot", x: 120, y: 310 }, 
+  { name: "Forearm", x: 50, y: 160 }, 
+  { name: "Groin", x: 100, y: 200 }, 
+  { name: "Hamstring", x: 118, y: 235 }, 
+  { name: "Hand", x: 150, y: 175 },
+  { name: "Heel", x: 120, y: 300 }, 
+  { name: "Hip", x: 120, y: 180 }, 
+  { name: "Kidney", x: 100, y: 170 }, 
+  { name: "Knee", x: 83, y: 260 }, 
+  { name: "left Hand", x: 50, y: 180 }, 
+  { name: "left Finger", x: 50, y: 180 }, 
+  { name: "left Hamstring", x: 83, y: 235 }, 
+  { name: "left Knee", x: 83, y: 260 }, 
+  { name: "left Quadricep", x: 83, y: 235 }, 
   { name: "Neck", x: 100, y: 80 }, 
-  { name: "Oblique", x: 100, y: 250 }, 
-  { name: "Pectoral", x: 100, y: 180 }, 
-  { name: "Quadricep", x: 126, y: 345 }, 
-  { name: "Rib", x: 100, y: 190 }, 
-  { name: "Ribs", x: 100, y: 190 }, 
-  { name: "right Elbow", x: 72, y: 467 }, 
-  { name: "right Groin", x: 100, y: 300 },
-  { name: "right Hamstring", x: 126, y: 345 }, 
-  { name: "right Quadricep", x: 126, y: 345 }, 
-  { name: "right Shoulder", x: 150, y: 150 }, 
-  { name: "right Thumb", x: 50, y: 150 }, 
-  { name: "right Wrist", x: 150, y: 150 }, 
-  { name: "Shin", x: 120, y: 420 }, 
-  { name: "Shoulder", x: 50, y: 150 }, 
-  { name: "Thigh", x: 10, y: 257 }, 
-  { name: "Thumb", x: 176, y: 257 }, 
-  { name: "Toe", x: 128, y: 467 }, 
-  { name: "Tooth", x: 100, y: 65 }, 
-  { name: "Triceps", x: 74, y: 420 }, 
-  { name: "Wrist", x: 176, y: 257 }, 
+  { name: "Oblique", x: 80, y: 180 }, 
+  { name: "Pectoral", x: 85, y: 110 }, 
+  { name: "Quadricep", x: 118, y: 235 }, 
+  { name: "Rib", x: 115, y: 135 }, 
+  { name: "Ribs", x: 85, y: 135 }, 
+  { name: "right Elbow", x: 152, y: 145 }, 
+  { name: "right Groin", x: 100, y: 200 },
+  { name: "right Hamstring", x: 118, y: 235 }, 
+  { name: "right Quadricep", x: 118, y: 235 }, 
+  { name: "right Shoulder", x: 140, y: 110 },
+  { name: "right Thumb", x: 150, y: 175 }, 
+  { name: "right Wrist", x: 150, y: 172 }, 
+  { name: "Shin", x: 118, y: 285 }, 
+  { name: "Shoulder", x: 60, y: 110 }, 
+  { name: "Thigh", x: 83, y: 235 }, 
+  { name: "Thumb", x: 50, y: 180 }, 
+  { name: "Toe", x: 80, y: 310 }, 
+  { name: "Tooth", x: 100, y: 50 }, 
+  { name: "Triceps", x: 148, y: 130 }, 
+  { name: "Wrist", x: 50, y: 173 }, 
 ];
 
 const InjuryMarker = ({ bodyPart, injuries }) => {
@@ -61,7 +62,7 @@ const InjuryMarker = ({ bodyPart, injuries }) => {
   const color = occurrences > 0 ? colorScale(occurrences) : 'transparent';
 
   return occurrences > 0 ? (
-    <circle cx={bodyPart.x} cy={bodyPart.y} r='20' fill={color} stroke='black' strokeWidth='1' />
+    <circle cx={bodyPart.x} cy={bodyPart.y} r='12' fill={color} stroke='black' strokeWidth='1' />
   ) : null;
 };
 
@@ -89,29 +90,54 @@ const InjuryTab = () => {
   };
 
   const getPlayerInjuries = (playerName) => {
-    // Find the player's injuries based on their name
     const playerInjuries = injuryData.filter(injury => injury.name[0] === playerName);
+    const injuryOccurrences = {};
   
-    // Map over the found injuries to create a list of injury occurrences with details
-    return playerInjuries.flatMap(injury => {
-      return injuryToBodyPartMap.flatMap(bodyPart => {
-        if (injury[bodyPart.name] && injury[bodyPart.name].length > 0) {
-          return {
-            bodyPart: bodyPart.name,
-            occurrences: injury[bodyPart.name].length,
-            gameStatus: injury.game_status ? injury.game_status[0] : "Unknown",
-          };
+    playerInjuries.forEach(injuryRecord => {
+      Object.keys(injuryRecord).forEach(key => {
+        if (key.startsWith('injury') && injuryRecord[key][0]) {
+          const bodyPartName = injuryRecord[key][0];
+          const gameStatus = injuryRecord.game_status[0];
+  
+          // Make sure we are not duplicating "null" or "NA" entries
+          if (bodyPartName.toLowerCase() !== 'na' && bodyPartName.toLowerCase() !== 'null') {
+            // Use the body part name as the key to consolidate the same injuries
+            const statusKey = `${bodyPartName.toLowerCase()}`;
+  
+            if (!injuryOccurrences[statusKey]) {
+              injuryOccurrences[statusKey] = {
+                bodyPart: bodyPartName,
+                occurrences: 1,
+                gameStatus: gameStatus,
+              };
+            } else {
+              // Only increment the count if the gameStatus matches
+              if (injuryOccurrences[statusKey].gameStatus === gameStatus) {
+                injuryOccurrences[statusKey].occurrences++;
+              } else {
+                // Handle a new gameStatus for an existing bodyPartName
+                injuryOccurrences[statusKey + '-' + gameStatus] = {
+                  bodyPart: bodyPartName,
+                  occurrences: 1,
+                  gameStatus: gameStatus,
+                };
+              }
+            }
+          }
         }
-        return [];
       });
     });
+  
+    // Convert the occurrences object to an array of injury objects
+    return Object.values(injuryOccurrences);
   };
+  
   
   const InjuryLog = ({ injuries, playerName }) => {
     if (!injuries || injuries.length === 0) {
       return null;
     }
-
+  
     return (
       <div className='injury-log'>
         {injuries.map((injury, index) => (
@@ -122,7 +148,8 @@ const InjuryTab = () => {
       </div>
     );
   };
-
+  
+  
   return (
     <div className='injury-tab'>
       <input
