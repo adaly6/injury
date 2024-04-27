@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sleeper/static/css/main.c00d7348.css",
+    "main.js": "/sleeper/static/js/main.70c376ec.js",
+    "index.html": "/sleeper/index.html",
+    "main.c00d7348.css.map": "/sleeper/static/css/main.c00d7348.css.map",
+    "main.70c376ec.js.map": "/sleeper/static/js/main.70c376ec.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c00d7348.css",
+    "static/js/main.70c376ec.js"
+  ]
+}
